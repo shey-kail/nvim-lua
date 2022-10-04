@@ -8,14 +8,23 @@ local mason=require("mason")
 mason.setup()
 -- enable mason-lspconfig
 local mason_lspconfig=require("mason-lspconfig")
-mason_lspconfig.setup()
+-- ensure gopls jedi_language_server r_language_server omnisharp sumneko_lua be installed
+mason_lspconfig.setup({
+	ensure_installed = {
+		"gopls",
+		"jedi_language_server",
+		"r_language_server",
+		"omnisharp",
+		"sumneko_lua"
+	},
+})
 
 local attach = function ()
 	-- enable lsp keymaps 
 	require('keymaps').attach()
 	-- enable auto-open floating diagnostics, lsp info style
 	require('lspconf.handlers').setup()
-  -- LSP signature hint as you type 
+	-- LSP signature hint as you type 
 	require("lsp_signature").on_attach()
 end
 
