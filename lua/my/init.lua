@@ -1,0 +1,20 @@
+---------------------
+--- header_plugin ---
+---------------------
+-----
+--
+-- info : provide commands to print the header of csv, tsv, csv.gz and tsv.gz files
+--
+-----
+--
+-- commands :
+--
+-- Headercsv: print csv's header
+-- Headercsvgz: print csv.gz's header
+-- Headertsv: print tsv's header
+-- Headertsvgz: print tsv.gz's header
+--
+-- usage: Headercsv path_to_csv column_range
+--
+-----
+require("my.header_plugin")

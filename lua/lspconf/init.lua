@@ -1,0 +1,3 @@
+-- enable
+
+require('lspconf.lsp')
