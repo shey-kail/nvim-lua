@@ -32,29 +32,11 @@ vim.cmd("colorscheme one-nvim")
 
 
 --- ===
---- === change color
+--- === disable default keymaps of Nvim-R, I have set some keymaps in keymaps.lua
 --- ===
----change popup menu's color
---vim.api.nvim_set_hl(0, 'Pmenu', { fg = '#BBBBBB', bg = '#272727' })
---vim.api.nvim_set_hl(0, 'PmenuSel', { fg = '#BBBBBB', bg = '#004b72' })
---vim.api.nvim_set_hl(0, 'PmenuSbar', { fg = 'NONE', bg = '#343B41' })
---vim.api.nvim_set_hl(0, 'PmenuThumb', { fg = 'NONE', bg = '#BBBBBB' })
---
------change tab line's color
---vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#BBBBBB', bg = '#272727' })
---vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#BBBBBB', bg = '#272727' })
---
------change status line's color
-----setting tab line's background color
---vim.api.nvim_set_hl(0, 'TabLineFill', { fg = "NONE", bg = '#272727' })
-----setting unselected tab's color
---vim.api.nvim_set_hl(0, 'TabLine', { fg = "NONE", bg = "#272727" })
-----setting selected tab's color
---vim.api.nvim_set_hl(0, 'TabLineSel', { fg = "NONE", bg = "#777777" })
---
-----setting WinSeparator color
---vim.api.nvim_set_hl(0, 'WinSeparator', { fg = "NONE", bg = "#272727" })
-
---setting SignColumn color
---vim.api.nvim_set_hl(0, 'SignColumn', { fg = "NONE", bg = "#000000" })
+vim.g.R_user_maps_only = 1
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+	  pattern = {"*.r", "*.R"},
+	  callback = require("keymaps").nvimRkey
+})
 

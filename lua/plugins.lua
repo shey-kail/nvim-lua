@@ -1,3 +1,4 @@
+local keymaps = require "keymaps"
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
@@ -5,7 +6,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
 	-- Packer can manage itself
-	use {'wbthomason/packer.nvim'}
+	use {'wbthomason/packer.nvim',opt=true}
 
 	-- preview colors in files
 	use {'NvChad/nvim-colorizer.lua',
@@ -41,7 +42,6 @@ return require('packer').startup(function(use)
 	use {'mg979/vim-visual-multi'}
 	use { "kylechui/nvim-surround", tag = "*", config = function() require("nvim-surround").setup{} end } -- Use tag="*" for stability; omit to use `main` branch for the latest features
 
-
 	--	markdown
 	use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', ft = {'markdown'} }
 	-- use 'dhruvasagar/vim-table-mode'
@@ -63,17 +63,52 @@ return require('packer').startup(function(use)
 	use {'saadparwaiz1/cmp_luasnip'} -- Snippets source for nvim-cmp
 	use {'hrsh7th/cmp-nvim-lua', ft={"lua"}} -- plugin to provide vim.api.* completion
 
+	use {"zbirenbaum/copilot.lua",
+		event = "VimEnter",
+		config = function()
+			vim.defer_fn(function()
+				require("copilot").setup()
+			end, 100)
+		end
+	}
+	use {"zbirenbaum/copilot-cmp",
+		after = "copilot.lua",
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	}
+
+	--for rust, rust-tools 
+	--these override the defaults set by rust-tools.nvim
+--	use { "simrat39/rust-tools.nvim",
+--		config = {
+--			tools = {
+--				runnables = {
+--					use_telescope = true,
+--				},
+--				inlay_hints = {
+--					auto = true,
+--					show_parameter_hints = false,
+--					parameter_hints_prefix = "",
+--					other_hints_prefix = "",
+--				},
+--			},
+--		}
+--	}
+
+
 	-- dress
 	use {'stevearc/dressing.nvim'}
 
 
 	--	fcitx auto-convertion
-	use {'vim-scripts/fcitx.vim'}
+	--use {'vim-scripts/fcitx.vim'}
+	use {'h-hg/fcitx.nvim'}
 	--use '520Matches/fcitx5.vim' 
 
 
 	-- nvim-R
-	use {'jalvesaq/Nvim-R',ft = {'r'},branch="stable"}
+	use {'jalvesaq/Nvim-R', ft = {'r'}, branch="stable" }
 
 	-- debug 
 	use {"ravenxrz/DAPInstall.nvim",opt=true}
@@ -97,22 +132,25 @@ return require('packer').startup(function(use)
 
 	-- indentLine
 	--use {'Yggdroot/indentLine'}
-	use {"lukas-reineke/indent-blankline.nvim", config = function () require("indent_blankline").setup{ } end }
+	--use {"lukas-reineke/indent-blankline.nvim", config = function () require("indent_blankline").setup{ } end }
 
 	--fuzzy finder
 	use { 'nvim-telescope/telescope.nvim',
+		opt=true,
 		tag = '0.1.0',
 		requires = { {'nvim-lua/plenary.nvim'} },
 		config = function ()
 			require("telescopeconfig")
+			keymaps.telescopekey()
 		end
 	}
 
-	-- ai
-	use {'github/copilot.vim'}
 
 	-- color theme
 	use {'shey-kail/one-nvim'}
+
+	-- start time
+	use 'dstein64/vim-startuptime'
 
 
 end)

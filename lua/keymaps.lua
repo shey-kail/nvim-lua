@@ -46,9 +46,9 @@ noremap('n', '<leader>fs', '<cmd>tabedit ~/.config/nvim/lua/plugins.lua<cr>', {}
 -- ===
 -- use <space> + hjkl for moving the cursor around windows
 noremap('n', '<leader>w', '<C-w>w', {})
-noremap('n', '<leader>k', '<C-w>k', {})
 noremap('n', '<leader>h', '<C-w>h', {})
 noremap('n', '<leader>j', '<C-w>j', {})
+noremap('n', '<leader>k', '<C-w>k', {})
 noremap('n', '<leader>l', '<C-w>l', {})
 -- resize splits with arrow keys
 noremap('n', '<up>', ':res +5<CR>', {})
@@ -72,21 +72,12 @@ noremap('t', '<Esc>', '<C-\\><C-n>', {})
 noremap('n', '<leader>ra', '<cmd>RnvimrToggle<cr>', {})
 
 
--- telescope keymaps
-local telescope = require('telescope.builtin')
-map('n', '<leader>ff', telescope.find_files, {})
-map('n', '<leader>fg', telescope.live_grep, {})
-map('n', '<leader>b', telescope.buffers, {})
-map('n', '<leader>h', telescope.help_tags, {})
-
-
 
 ---
 ---lsp attach function : mapping keys
 ---
 local M = {}
-M.attach = function(client, bufnr) -- set up buffer keymaps, etc.
-
+M.attach = function(client, bufnr) -- set up lsp keymaps, etc.
 	local bufopts = {silent=true, buffer=bufnr }
 	local gp=require('goto-preview')
 	noremap('n', '<leader>gd', gp.goto_preview_definition, bufopts)
@@ -94,12 +85,26 @@ M.attach = function(client, bufnr) -- set up buffer keymaps, etc.
 	noremap('n', '<leader>gr', gp.goto_preview_references, bufopts)
 	noremap('n', '<leader>gi', gp.goto_preview_implementation, bufopts)
 	noremap('n', '<leader>gx', gp.close_all_win, bufopts)
---nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>
-
 
 	noremap('n', 'K', vim.lsp.buf.hover, bufopts)
 	noremap('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+end
 
+M.nvimRkey = function() -- set up NvimR keymaps
+	local bufopts = {silent=true, buffer=true}
+	map('n', '<localleader>rf', ":call StartR(\"R\")<CR>", bufopts)
+	map({'n','v'}, '<localleader><ENTER>', ":call SendLineToR(\"stay\")<CR>", bufopts)
+	map('n', '<localleader>ro', ":call RObjBrowser()<CR>", bufopts)
+	map('n', '<localleader>rh', ":call RAction(\"help\")<CR>", bufopts)
+end
+
+
+M.telescopekey = function() -- telescope.nvim keymaps
+	local telescope = require('telescope.builtin')
+	map('n', '<leader>ff', telescope.find_files, {})
+	map('n', '<leader>fg', telescope.live_grep, {})
+	map('n', '<leader>b', telescope.buffers, {})
+	map('n', '<leader>h', telescope.help_tags, {})
 end
 
 return M

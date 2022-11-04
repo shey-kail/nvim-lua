@@ -2,10 +2,12 @@
 require('localconf')
 -- managing plugins
 require('plugins')
--- managing lsp
-require('lspconf')
 -- keyboard mapping
 require('keymaps')
-
+-- managing lsp
+require('lspconf')
 -- my custom functions and command
 require("my")
+
+
+

@@ -1,3 +1,1 @@
--- enable
-
-require('lspconf.lsp')
+require("lspconf.lsp")
