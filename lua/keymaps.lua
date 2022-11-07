@@ -93,7 +93,7 @@ end
 M.nvimRkey = function() -- set up NvimR keymaps
 	local bufopts = {silent=true, buffer=true}
 	map('n', '<localleader>rf', ":call StartR(\"R\")<CR>", bufopts)
-	map({'n','v'}, '<localleader><ENTER>', ":call SendLineToR(\"stay\")<CR>", bufopts)
+	map({'n','v'}, '<localleader><space>', ":call SendLineToR(\"stay\")<CR>", bufopts)
 	map('n', '<localleader>ro', ":call RObjBrowser()<CR>", bufopts)
 	map('n', '<localleader>rh', ":call RAction(\"help\")<CR>", bufopts)
 end

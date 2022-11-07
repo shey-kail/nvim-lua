@@ -35,6 +35,7 @@ vim.cmd("colorscheme one-nvim")
 --- === disable default keymaps of Nvim-R, I have set some keymaps in keymaps.lua
 --- ===
 vim.g.R_user_maps_only = 1
+vim.g.R_assign = 0
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 	  pattern = {"*.r", "*.R"},
 	  callback = require("keymaps").nvimRkey

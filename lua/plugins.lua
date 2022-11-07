@@ -108,7 +108,7 @@ return require('packer').startup(function(use)
 
 
 	-- nvim-R
-	use {'jalvesaq/Nvim-R', ft = {'r'}, branch="stable" }
+	use {'jalvesaq/Nvim-R', ft = {'r'}, branch="stable"}
 
 	-- debug 
 	use {"ravenxrz/DAPInstall.nvim",opt=true}
