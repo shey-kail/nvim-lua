@@ -6,6 +6,8 @@ require('plugins')
 require('keymaps')
 -- managing lsp
 require('lspconf')
+-- managing dap
+require('dapconf')
 -- my custom functions and command
 require("my")
 

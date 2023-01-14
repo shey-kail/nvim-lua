@@ -1,0 +1,7 @@
+{
+  "bash": {
+    "prefix": "multi",
+    "body": "THREAD=${1:thread}\nROOTDIR="$(pwd)"\nTMP_FIFO="/tmp/$.fifo"\nmkfifo "${TMP_FIFO}"\nexec 6<>"${TMP_FIFO}"\nrm ${TMP_FIFO}\nfor ((i=0;i<${THREAD};i++));\ndo\necho\ndone >&6\n#while ((1)) #some control \nfor i in ${2:loop_item}\ndo\nread -u6\n{\n${3:needtodo}\necho >&6\n}&\ndone \nwait\nexec 6>&-\nexit 0",
+    "description": "parallel run"
+  }
+}

@@ -1,4 +1,4 @@
-local keymaps = require "keymaps"
+local keymaps = require("keymaps")
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
@@ -7,35 +7,6 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use {'wbthomason/packer.nvim',opt=true}
-
-	-- preview colors in files
-	use {'NvChad/nvim-colorizer.lua',
-		opt=true,
-		config=function() require("colorizer").setup{
-			filetypes = { "*" },
-			user_default_options = {
-				RGB = true, -- #RGB hex codes
-				RRGGBB = true, -- #RRGGBB hex codes
-				names = true, -- "Name" codes like Blue or blue
-				RRGGBBAA = true, -- #RRGGBBAA hex codes
-				AARRGGBB = false, -- 0xAARRGGBB hex codes
-				rgb_fn = false, -- CSS rgb() and rgba() functions
-				hsl_fn = false, -- CSS hsl() and hsla() functions
-				css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-				css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-				-- Available modes for `mode`: foreground, background,	virtualtext
-				mode = "background", -- Set the display mode.
-				-- Available methods are false / true / "normal" / "lsp" / "both"
-				-- True is same as normal
-				tailwind = false, -- Enable tailwind colors
-				-- parsers can contain values used in |user_default_options|
-				sass = { enable = false, parsers = { css }, }, -- Enable sass colors
-				virtualtext = "■",
-			},
-		-- all the sub-options of filetypes apply to buftypes
-			buftypes = {},
-		}
-	end}
 
 	--	input behaviors
 	use { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup{} end }
@@ -63,38 +34,27 @@ return require('packer').startup(function(use)
 	use {'saadparwaiz1/cmp_luasnip'} -- Snippets source for nvim-cmp
 	use {'hrsh7th/cmp-nvim-lua', ft={"lua"}} -- plugin to provide vim.api.* completion
 
-	use {"zbirenbaum/copilot.lua",
-		event = "VimEnter",
-		config = function()
-			vim.defer_fn(function()
-				require("copilot").setup()
-			end, 100)
-		end
-	}
-	use {"zbirenbaum/copilot-cmp",
-		after = "copilot.lua",
-		config = function()
-			require("copilot_cmp").setup()
-		end,
-	}
+----	use {"zbirenbaum/copilot.lua",
+----		event = "InsertEnter",
+----		config = function ()
+----			vim.schedule(function()
+----				require("copilot").setup()
+----			end)
+----		end,
+----	}
+----	use {"zbirenbaum/copilot-cmp",
+----		after = "copilot.lua",
+----		config = function()
+----			require("copilot_cmp").setup{
+----				method = "getCompletionsCycling",
+----
+----			}
+----		end,
+----	}
 
 	--for rust, rust-tools 
 	--these override the defaults set by rust-tools.nvim
---	use { "simrat39/rust-tools.nvim",
---		config = {
---			tools = {
---				runnables = {
---					use_telescope = true,
---				},
---				inlay_hints = {
---					auto = true,
---					show_parameter_hints = false,
---					parameter_hints_prefix = "",
---					other_hints_prefix = "",
---				},
---			},
---		}
---	}
+    --	use { "simrat39/rust-tools.nvim", config = { tools = { runnables = { use_telescope = true, }, inlay_hints = { auto = true, show_parameter_hints = false, parameter_hints_prefix = "", other_hints_prefix = "", }, }, } }
 
 
 	-- dress
@@ -117,13 +77,42 @@ return require('packer').startup(function(use)
 	use {"rcarriga/nvim-dap-ui",opt=true}
 
 	-- fastfold
-	use {'Konfekt/FastFold', ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'go', 'vim', 'r', 'cs','py','lua'}}
+	--use {'Konfekt/FastFold', ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'go', 'vim', 'r', 'cs','py','lua'}}
+	use {'kevinhwang91/nvim-ufo',
+		requires = 'kevinhwang91/promise-async',
+		after = "nvim-lspconfig",
+		ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'go', 'vim', 'r', 'cs','py','lua'},
+		config = function ()
+			require("ufo").setup()
+		end
+	}
 
 
 	-- a simple tab line
 	use {'crispgm/nvim-tabline',
 		config = function()
 			require('tabline').setup({})
+		end,
+	}
+
+	-- a fast and easy to config statusline
+	use {'nvim-lualine/lualine.nvim',
+		event = { "BufRead", "BufNewFile" },
+		config = function()
+			require('lualine').setup({
+				options = {
+					component_separators = { left = ' ', right = ' '},
+					section_separators = { left = ' ', right = ' '},
+				},
+				sections = {
+					lualine_a = {'mode'},
+					lualine_b = {'diagnostics'},
+					lualine_c = {'filetype'},
+					lualine_x = {'encoding'},
+					lualine_y = {'progress'},
+					lualine_z = {'location'}
+				},
+			})
 		end,
 	}
 
@@ -138,13 +127,12 @@ return require('packer').startup(function(use)
 	use { 'nvim-telescope/telescope.nvim',
 		opt=true,
 		tag = '0.1.0',
-		requires = { {'nvim-lua/plenary.nvim'} },
+		requires = {'nvim-lua/plenary.nvim'},
 		config = function ()
 			require("telescopeconfig")
 			keymaps.telescopekey()
 		end
 	}
-
 
 	-- color theme
 	use {'shey-kail/one-nvim'}

@@ -1,0 +1,21 @@
+{
+  "name": "shey-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "sh",
+		  "shell",
+		  "shellscript"
+        ],
+        "path": "./shell.json"
+      },
+      {
+        "language": [
+          "r"
+        ],
+        "path": "./r.json"
+      }
+    ]
+  }
+}

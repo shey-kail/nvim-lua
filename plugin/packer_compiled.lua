@@ -80,13 +80,6 @@ _G.packer_plugins = {
     path = "/home/shey/.local/share/nvim/site/pack/packer/opt/DAPInstall.nvim",
     url = "https://github.com/ravenxrz/DAPInstall.nvim"
   },
-  FastFold = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/shey/.local/share/nvim/site/pack/packer/opt/FastFold",
-    url = "https://github.com/Konfekt/FastFold"
-  },
   LuaSnip = {
     loaded = true,
     path = "/home/shey/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -127,25 +120,6 @@ _G.packer_plugins = {
     path = "/home/shey/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["copilot-cmp"] = {
-    config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16copilot_cmp\frequire\0" },
-    load_after = {
-      ["copilot.lua"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/shey/.local/share/nvim/site/pack/packer/opt/copilot-cmp",
-    url = "https://github.com/zbirenbaum/copilot-cmp"
-  },
-  ["copilot.lua"] = {
-    after = { "copilot-cmp" },
-    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fcopilot\frequire-\1\0\4\0\3\0\0066\0\0\0009\0\1\0003\2\2\0)\3d\0B\0\3\1K\0\1\0\0\rdefer_fn\bvim\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/shey/.local/share/nvim/site/pack/packer/opt/copilot.lua",
-    url = "https://github.com/zbirenbaum/copilot.lua"
-  },
   ["dressing.nvim"] = {
     loaded = true,
     path = "/home/shey/.local/share/nvim/site/pack/packer/start/dressing.nvim",
@@ -166,6 +140,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shey/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
+  ["lualine.nvim"] = {
+    config = { "\27LJ\2\nø\2\0\0\5\0\24\0\0276\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\v\0005\4\n\0=\4\f\0035\4\r\0=\4\14\0035\4\15\0=\4\16\0035\4\17\0=\4\18\0035\4\19\0=\4\20\0035\4\21\0=\4\22\3=\3\23\2B\0\2\1K\0\1\0\rsections\14lualine_z\1\2\0\0\rlocation\14lualine_y\1\2\0\0\rprogress\14lualine_x\1\2\0\0\rencoding\14lualine_c\1\2\0\0\rfiletype\14lualine_b\1\2\0\0\16diagnostics\14lualine_a\1\0\0\1\2\0\0\tmode\foptions\1\0\0\23section_separators\1\0\2\nright\6 \tleft\6 \25component_separators\1\0\0\1\0\2\nright\6 \tleft\6 \nsetup\flualine\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/shey/.local/share/nvim/site/pack/packer/opt/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["markdown-preview.nvim"] = {
     loaded = false,
@@ -194,13 +176,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shey/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-colorizer.lua"] = {
-    config = { "\27LJ\2\nª\2\0\0\a\0\r\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0004\5\3\0006\6\b\0>\6\1\5=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\rbuftypes\25user_default_options\tsass\fparsers\bcss\1\0\1\venable\1\1\0\f\rRRGGBBAA\2\nnames\2\vRRGGBB\2\bRGB\2\tmode\15background\16virtualtext\bâ– \rtailwind\1\vcss_fn\1\bcss\1\vhsl_fn\1\vrgb_fn\1\rAARRGGBB\1\14filetypes\1\0\0\1\2\0\0\6*\nsetup\14colorizer\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/shey/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua",
-    url = "https://github.com/NvChad/nvim-colorizer.lua"
   },
   ["nvim-dap"] = {
     loaded = false,
@@ -237,6 +212,15 @@ _G.packer_plugins = {
     path = "/home/shey/.local/share/nvim/site/pack/packer/start/nvim-tabline",
     url = "https://github.com/crispgm/nvim-tabline"
   },
+  ["nvim-ufo"] = {
+    config = { "\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bufo\frequire\0" },
+    load_after = {},
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/shey/.local/share/nvim/site/pack/packer/opt/nvim-ufo",
+    url = "https://github.com/kevinhwang91/nvim-ufo"
+  },
   ["one-nvim"] = {
     loaded = true,
     path = "/home/shey/.local/share/nvim/site/pack/packer/start/one-nvim",
@@ -256,6 +240,11 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/shey/.local/share/nvim/site/pack/packer/opt/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["promise-async"] = {
+    loaded = true,
+    path = "/home/shey/.local/share/nvim/site/pack/packer/start/promise-async",
+    url = "https://github.com/kevinhwang91/promise-async"
   },
   rnvimr = {
     loaded = true,
@@ -283,44 +272,49 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: goto-preview
-time([[Config for goto-preview]], true)
-try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17goto-preview\frequire\0", "config", "goto-preview")
-time([[Config for goto-preview]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
 time([[Config for nvim-autopairs]], false)
--- Config for: nvim-tabline
-time([[Config for nvim-tabline]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftabline\frequire\0", "config", "nvim-tabline")
-time([[Config for nvim-tabline]], false)
 -- Config for: nvim-surround
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
 time([[Config for nvim-surround]], false)
+-- Config for: nvim-tabline
+time([[Config for nvim-tabline]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftabline\frequire\0", "config", "nvim-tabline")
+time([[Config for nvim-tabline]], false)
+-- Config for: goto-preview
+time([[Config for goto-preview]], true)
+try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17goto-preview\frequire\0", "config", "goto-preview")
+time([[Config for goto-preview]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-lspconfig ]]
+time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType go ++once lua require("packer.load")({'FastFold'}, { ft = "go" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'nvim-ufo'}, { ft = "c" }, _G.packer_plugins)]]
+vim.cmd [[au FileType sh ++once lua require("packer.load")({'nvim-ufo'}, { ft = "sh" }, _G.packer_plugins)]]
+vim.cmd [[au FileType zsh ++once lua require("packer.load")({'nvim-ufo'}, { ft = "zsh" }, _G.packer_plugins)]]
+vim.cmd [[au FileType bash ++once lua require("packer.load")({'nvim-ufo'}, { ft = "bash" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'nvim-ufo'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cmake ++once lua require("packer.load")({'nvim-ufo'}, { ft = "cmake" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'nvim-ufo'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType vim ++once lua require("packer.load")({'nvim-ufo'}, { ft = "vim" }, _G.packer_plugins)]]
+vim.cmd [[au FileType go ++once lua require("packer.load")({'nvim-ufo'}, { ft = "go" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
-vim.cmd [[au FileType lua ++once lua require("packer.load")({'FastFold', 'cmp-nvim-lua'}, { ft = "lua" }, _G.packer_plugins)]]
-vim.cmd [[au FileType c ++once lua require("packer.load")({'FastFold'}, { ft = "c" }, _G.packer_plugins)]]
-vim.cmd [[au FileType zsh ++once lua require("packer.load")({'FastFold'}, { ft = "zsh" }, _G.packer_plugins)]]
-vim.cmd [[au FileType bash ++once lua require("packer.load")({'FastFold'}, { ft = "bash" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cpp ++once lua require("packer.load")({'FastFold'}, { ft = "cpp" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cmake ++once lua require("packer.load")({'FastFold'}, { ft = "cmake" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'FastFold'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cs ++once lua require("packer.load")({'FastFold'}, { ft = "cs" }, _G.packer_plugins)]]
-vim.cmd [[au FileType py ++once lua require("packer.load")({'FastFold'}, { ft = "py" }, _G.packer_plugins)]]
-vim.cmd [[au FileType r ++once lua require("packer.load")({'Nvim-R', 'FastFold'}, { ft = "r" }, _G.packer_plugins)]]
-vim.cmd [[au FileType vim ++once lua require("packer.load")({'FastFold'}, { ft = "vim" }, _G.packer_plugins)]]
-vim.cmd [[au FileType sh ++once lua require("packer.load")({'FastFold'}, { ft = "sh" }, _G.packer_plugins)]]
+vim.cmd [[au FileType lua ++once lua require("packer.load")({'nvim-ufo', 'cmp-nvim-lua'}, { ft = "lua" }, _G.packer_plugins)]]
+vim.cmd [[au FileType py ++once lua require("packer.load")({'nvim-ufo'}, { ft = "py" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cs ++once lua require("packer.load")({'nvim-ufo'}, { ft = "cs" }, _G.packer_plugins)]]
+vim.cmd [[au FileType r ++once lua require("packer.load")({'nvim-ufo', 'Nvim-R'}, { ft = "r" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'copilot.lua'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'lualine.nvim'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'lualine.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

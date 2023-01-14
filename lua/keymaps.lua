@@ -55,6 +55,9 @@ noremap('n', '<up>', ':res +5<CR>', {})
 noremap('n', '<down>', ':res -5<CR>', {})
 noremap('n', '<left>', ':vertical resize-5<CR>', {})
 noremap('n', '<right>', ':vertical resize+5<CR>', {})
+-- vertical to horizontal ( | -> -- )
+noremap('n', '<leader>z', '<C-w>t<C-w>K', {})
+noremap('n', '<leader>v', '<C-w>t<C-w>H', {})
 
 
 --use Ctrl+jk for repaid warching 
@@ -104,8 +107,24 @@ M.telescopekey = function() -- telescope.nvim keymaps
 	map('n', '<leader>ff', telescope.find_files, {})
 	map('n', '<leader>fg', telescope.live_grep, {})
 	map('n', '<leader>b', telescope.buffers, {})
-	map('n', '<leader>h', telescope.help_tags, {})
+--	map('n', '<leader>h', telescope.help_tags, {})
 end
+
+M.dap = function ()
+	-- debug
+	map("n", "<leader>b", ":DapToggleBreakpoint<cr>", {})
+	-- map("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", {})
+	map("n", "<F9>", "<cmd>lua require'dap'.run_last()<cr>", {})
+	map("n", "<F4>", "<cmd>lua require'dap'.terminate()<cr>", {})
+	map("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", {})
+	map("n", "<F6>", "<cmd>lua require'dap'.step_over()<cr>", {})
+	map("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", {})
+	map("n", "<F8>", "<cmd>lua require'dap'.step_out()<cr>", {})
+	-- map("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<cr>", {})
+	-- map("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", {})
+end
+
+
 
 return M
 

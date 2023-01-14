@@ -7,6 +7,7 @@ vim.o.ignorecase = true
 vim.o.encoding = "utf-8"    -- 保存时的字符编码
 vim.o.fileencodings = "ucs-bom,utf-8,cp936"  -- 字符编码
 vim.opt.signcolumn = "yes"   -- 总是显示最左边的signcolumn
+vim.o.mouse = "a" --禁用鼠标
 
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99

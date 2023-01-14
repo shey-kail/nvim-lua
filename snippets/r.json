@@ -1,0 +1,43 @@
+{
+    "apply": {
+        "prefix": "apply",
+        "body": "apply(${1:array}, ${2:margin}, ${3:...})",
+		,
+		"description": "apply"
+    },
+    "lapply": {
+        "prefix": "lapply",
+        "body": "lapply(${1:list}, ${2:function})",
+		"description": "lapply"
+    },
+    "sapply": {
+        "prefix": "sapply",
+        "body": "sapply(${1:list}, ${2:function})" ,
+		"description": "sapply"
+    },
+    "mapply": {
+        "prefix": "mapply",
+        "body": "mapply(${1:function}, ${2:...})" ,
+		"description": "mapply"
+    },
+    "tapply": {
+        "prefix": "tapply",
+        "body": "tapply(${1:vector}, ${2:index}, ${3:function})" ,
+		"description": "tapply"
+    },
+    "vapply": {
+        "prefix": "vapply",
+        "body": "vapply(${1:list}, ${2:function}, FUN.VALUE = ${3:type}, ${4:...})" ,
+		"description": "vapply"
+    },
+    "rapply": {
+        "prefix": "rapply",
+        "body": "rapply(${1:list}, ${2:function})" ,
+		"description": "rapply"
+    },
+	"ggplot": {
+		"prefix": "gg",
+		"body": "ggplot(${1:${VISUAL:data}}, aes(${0:aesthetics}))",
+		"description": "ggplot start"
+	}
+}
