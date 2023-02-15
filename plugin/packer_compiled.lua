@@ -74,6 +74,14 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["ChatGPT.nvim"] = {
+    after = { "nui.nvim", "plenary.nvim" },
+    config = { "\27LJ\2\n–\a\0\0\6\0\30\0%6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0005\4\5\0=\4\6\3=\3\a\0025\3\v\0005\4\b\0005\5\t\0=\5\n\4=\4\f\3=\3\r\0025\3\14\0005\4\15\0005\5\16\0=\5\n\4=\4\f\3=\3\17\0025\3\18\0005\4\19\0005\5\20\0=\5\n\4=\4\f\3=\3\21\0025\3\22\0=\3\23\0025\3\24\0=\3\25\0025\3\27\0005\4\26\0=\4\28\3=\3\29\2B\0\2\1K\0\1\0\fkeymaps\nclose\1\0\6\16new_session\n<C-n>\20toggle_settings\n<C-o>\18cycle_windows\n<Tab>\16scroll_down\n<C-d>\14scroll_up\n<C-u>\14yank_last\n<C-y>\1\2\0\0\n<Esc>\23openai_edit_params\1\0\4\nmodel\26code-davinci-edit-001\6n\3\1\ntop_p\3\1\16temperature\3\0\18openai_params\1\0\a\nmodel\21text-davinci-003\6n\3\1\ntop_p\3\1\16temperature\3\0\15max_tokens\3¨\2\21presence_penalty\3\0\22frequency_penalty\3\0\15chat_input\1\0\2\14top_align\vcenter\btop\r Prompt \1\0\2\nstyle\frounded\14highlight\16FloatBorder\1\0\1\vprompt\n ÔÜí \16chat_window\1\0\1\btop\14 ChatGPT \1\0\2\nstyle\frounded\14highlight\16FloatBorder\1\0\1\rfiletype\fchatgpt\20settings_window\vborder\1\0\0\ttext\1\0\1\btop\15 Settings \1\0\1\nstyle\frounded\16chat_layout\tsize\1\0\2\nwidth\b80%\vheight\b80%\1\0\2\rrelative\veditor\rposition\b50%\1\0\6\18question_sign\tüòà\18yank_register\6+\20max_line_length\3x\16answer_sign\tü§ñ\17loading_text\floading\20welcome_message#Ê¨¢ËøéÂõûÊù•ÔºåÊ≤ôÁ¶èÊûóÂ§ß‰∫∫\nsetup\fchatgpt\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/shey/.local/share/nvim/site/pack/packer/opt/ChatGPT.nvim",
+    url = "https://github.com/jackMort/ChatGPT.nvim"
+  },
   ["DAPInstall.nvim"] = {
     loaded = false,
     needs_bufread = false,
@@ -81,6 +89,7 @@ _G.packer_plugins = {
     url = "https://github.com/ravenxrz/DAPInstall.nvim"
   },
   LuaSnip = {
+    config = { "\27LJ\2\nÔ\3\0\0\6\0\19\00006\0\0\0009\0\1\0'\2\2\0B\0\2\2'\1\3\0&\0\1\0006\1\4\0009\1\5\0016\3\4\0009\3\6\0039\3\a\3\18\5\3\0009\3\b\3B\3\2\2\18\4\0\0B\1\3\2\14\0\1\0X\1\aÄ6\1\4\0009\1\6\0019\1\a\1\18\3\1\0009\1\t\1\18\4\0\0B\1\3\0016\1\n\0'\3\v\0B\1\2\0029\1\f\0019\1\r\0015\3\14\0B\1\2\0016\1\n\0'\3\15\0B\1\2\0029\1\16\1B\1\1\0016\1\n\0'\3\17\0B\1\2\0029\1\16\1B\1\1\0016\1\n\0'\3\18\0B\1\2\0029\1\16\1B\1\1\1K\0\1\0\"luasnip.loaders.from_snipmate luasnip.loaders.from_vscode\14lazy_load\29luasnip.loaders.from_lua\1\0\3\17updateevents\29TextChanged,TextChangedI\fhistory\2\24delete_check_events\28TextChanged,InsertLeave\15set_config\vconfig\fluasnip\frequire\vappend\bget\brtp\bopt\17tbl_contains\bvim\28/.config/nvim/snippets/\tHOME\vgetenv\aos\0" },
     loaded = true,
     path = "/home/shey/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
@@ -119,6 +128,25 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shey/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  ["copilot-cmp"] = {
+    config = { "\27LJ\2\n]\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\vmethod\26getCompletionsCycling\nsetup\16copilot_cmp\frequire\0" },
+    load_after = {
+      ["copilot.lua"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/shey/.local/share/nvim/site/pack/packer/opt/copilot-cmp",
+    url = "https://github.com/zbirenbaum/copilot-cmp"
+  },
+  ["copilot.lua"] = {
+    after = { "copilot-cmp" },
+    config = { "\27LJ\2\nû\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\14filetypes\1\0\5\6r\2\blua\2\ago\2\apy\2\ash\2\npanel\1\0\1\fenabled\1\15suggestion\1\0\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire)\1\0\3\0\3\0\0056\0\0\0009\0\1\0003\2\2\0B\0\2\1K\0\1\0\0\rschedule\bvim\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/shey/.local/share/nvim/site/pack/packer/opt/copilot.lua",
+    url = "https://github.com/zbirenbaum/copilot.lua"
   },
   ["dressing.nvim"] = {
     loaded = true,
@@ -165,6 +193,15 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shey/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["nui.nvim"] = {
+    load_after = {
+      ["ChatGPT.nvim"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/shey/.local/share/nvim/site/pack/packer/opt/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["nvim-autopairs"] = {
     config = { "\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
@@ -234,7 +271,7 @@ _G.packer_plugins = {
   },
   ["plenary.nvim"] = {
     load_after = {
-      ["telescope.nvim"] = true
+      ["ChatGPT.nvim"] = true
     },
     loaded = false,
     needs_bufread = false,
@@ -252,7 +289,6 @@ _G.packer_plugins = {
     url = "https://github.com/kevinhwang91/rnvimr"
   },
   ["telescope.nvim"] = {
-    after = { "plenary.nvim" },
     config = { "\27LJ\2\nJ\0\0\3\1\3\0\a6\0\0\0'\2\1\0B\0\2\1-\0\0\0009\0\2\0B\0\1\1K\0\1\0\0\0\17telescopekey\20telescopeconfig\frequire\0" },
     loaded = false,
     needs_bufread = true,
@@ -272,22 +308,26 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
--- Config for: nvim-surround
-time([[Config for nvim-surround]], true)
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
-time([[Config for nvim-surround]], false)
 -- Config for: nvim-tabline
 time([[Config for nvim-tabline]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftabline\frequire\0", "config", "nvim-tabline")
 time([[Config for nvim-tabline]], false)
+-- Config for: LuaSnip
+time([[Config for LuaSnip]], true)
+try_loadstring("\27LJ\2\nÔ\3\0\0\6\0\19\00006\0\0\0009\0\1\0'\2\2\0B\0\2\2'\1\3\0&\0\1\0006\1\4\0009\1\5\0016\3\4\0009\3\6\0039\3\a\3\18\5\3\0009\3\b\3B\3\2\2\18\4\0\0B\1\3\2\14\0\1\0X\1\aÄ6\1\4\0009\1\6\0019\1\a\1\18\3\1\0009\1\t\1\18\4\0\0B\1\3\0016\1\n\0'\3\v\0B\1\2\0029\1\f\0019\1\r\0015\3\14\0B\1\2\0016\1\n\0'\3\15\0B\1\2\0029\1\16\1B\1\1\0016\1\n\0'\3\17\0B\1\2\0029\1\16\1B\1\1\0016\1\n\0'\3\18\0B\1\2\0029\1\16\1B\1\1\1K\0\1\0\"luasnip.loaders.from_snipmate luasnip.loaders.from_vscode\14lazy_load\29luasnip.loaders.from_lua\1\0\3\17updateevents\29TextChanged,TextChangedI\fhistory\2\24delete_check_events\28TextChanged,InsertLeave\15set_config\vconfig\fluasnip\frequire\vappend\bget\brtp\bopt\17tbl_contains\bvim\28/.config/nvim/snippets/\tHOME\vgetenv\aos\0", "config", "LuaSnip")
+time([[Config for LuaSnip]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
 -- Config for: goto-preview
 time([[Config for goto-preview]], true)
 try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17goto-preview\frequire\0", "config", "goto-preview")
 time([[Config for goto-preview]], false)
+-- Config for: nvim-surround
+time([[Config for nvim-surround]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
+time([[Config for nvim-surround]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-lspconfig ]]
@@ -296,25 +336,26 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType c ++once lua require("packer.load")({'nvim-ufo'}, { ft = "c" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'nvim-ufo'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cs ++once lua require("packer.load")({'nvim-ufo'}, { ft = "cs" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType lua ++once lua require("packer.load")({'cmp-nvim-lua', 'nvim-ufo'}, { ft = "lua" }, _G.packer_plugins)]]
+vim.cmd [[au FileType vim ++once lua require("packer.load")({'nvim-ufo'}, { ft = "vim" }, _G.packer_plugins)]]
+vim.cmd [[au FileType r ++once lua require("packer.load")({'nvim-ufo', 'Nvim-R'}, { ft = "r" }, _G.packer_plugins)]]
 vim.cmd [[au FileType sh ++once lua require("packer.load")({'nvim-ufo'}, { ft = "sh" }, _G.packer_plugins)]]
+vim.cmd [[au FileType py ++once lua require("packer.load")({'nvim-ufo'}, { ft = "py" }, _G.packer_plugins)]]
+vim.cmd [[au FileType go ++once lua require("packer.load")({'nvim-ufo'}, { ft = "go" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'nvim-ufo'}, { ft = "c" }, _G.packer_plugins)]]
 vim.cmd [[au FileType zsh ++once lua require("packer.load")({'nvim-ufo'}, { ft = "zsh" }, _G.packer_plugins)]]
 vim.cmd [[au FileType bash ++once lua require("packer.load")({'nvim-ufo'}, { ft = "bash" }, _G.packer_plugins)]]
 vim.cmd [[au FileType cpp ++once lua require("packer.load")({'nvim-ufo'}, { ft = "cpp" }, _G.packer_plugins)]]
 vim.cmd [[au FileType cmake ++once lua require("packer.load")({'nvim-ufo'}, { ft = "cmake" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'nvim-ufo'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType vim ++once lua require("packer.load")({'nvim-ufo'}, { ft = "vim" }, _G.packer_plugins)]]
-vim.cmd [[au FileType go ++once lua require("packer.load")({'nvim-ufo'}, { ft = "go" }, _G.packer_plugins)]]
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
-vim.cmd [[au FileType lua ++once lua require("packer.load")({'nvim-ufo', 'cmp-nvim-lua'}, { ft = "lua" }, _G.packer_plugins)]]
-vim.cmd [[au FileType py ++once lua require("packer.load")({'nvim-ufo'}, { ft = "py" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cs ++once lua require("packer.load")({'nvim-ufo'}, { ft = "cs" }, _G.packer_plugins)]]
-vim.cmd [[au FileType r ++once lua require("packer.load")({'nvim-ufo', 'Nvim-R'}, { ft = "r" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'lualine.nvim'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'copilot.lua'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'lualine.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'lualine.nvim'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

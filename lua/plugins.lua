@@ -3,6 +3,9 @@ local keymaps = require("keymaps")
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
+vim.cmd [[packadd plenary.nvim]]
+vim.cmd [[packadd telescope.nvim]]
+vim.cmd [[packadd nui.nvim]]
 
 return require('packer').startup(function(use)
 	-- Packer can manage itself
@@ -30,27 +33,137 @@ return require('packer').startup(function(use)
 	use {'hrsh7th/cmp-buffer'}
 	use {'hrsh7th/cmp-path'}
 	use {'rmagatti/goto-preview', config = function() require('goto-preview').setup {} end } --previewing definitions using floating windows. 
-	use {'L3MON4D3/LuaSnip'} -- Snippets plugin
+
+	use {'L3MON4D3/LuaSnip',
+		config = function ()
+			local snippet_path = os.getenv("HOME") .. "/.config/nvim/snippets/"
+			if not vim.tbl_contains(vim.opt.rtp:get(), snippet_path) then
+				vim.opt.rtp:append(snippet_path)
+			end
+
+			require("luasnip").config.set_config({
+				history = true,
+				updateevents = "TextChanged,TextChangedI",
+				delete_check_events = "TextChanged,InsertLeave",
+			})
+			require("luasnip.loaders.from_lua").lazy_load()
+			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip.loaders.from_snipmate").lazy_load()
+		end} -- Snippets plugin
+
 	use {'saadparwaiz1/cmp_luasnip'} -- Snippets source for nvim-cmp
 	use {'hrsh7th/cmp-nvim-lua', ft={"lua"}} -- plugin to provide vim.api.* completion
 
-----	use {"zbirenbaum/copilot.lua",
-----		event = "InsertEnter",
-----		config = function ()
-----			vim.schedule(function()
-----				require("copilot").setup()
-----			end)
-----		end,
-----	}
-----	use {"zbirenbaum/copilot-cmp",
-----		after = "copilot.lua",
-----		config = function()
-----			require("copilot_cmp").setup{
-----				method = "getCompletionsCycling",
-----
-----			}
-----		end,
-----	}
+	use {"zbirenbaum/copilot.lua",
+		event = "InsertEnter",
+		config = function ()
+			vim.schedule(function()
+				require("copilot").setup({
+				  suggestion = { enabled = false },
+				  panel = { enabled = false },
+				  filetypes = {
+					sh = true,
+					py = true,
+					go = true,
+					lua = true,
+					r =true
+				  },
+				})
+
+			end)
+		end,
+	}
+
+	use {"zbirenbaum/copilot-cmp",
+		after = "copilot.lua",
+		config = function()
+			require("copilot_cmp").setup{
+				method = "getCompletionsCycling",
+			}
+		end,
+	}
+
+	use {"jackMort/ChatGPT.nvim",
+		opt = true,
+		config = function()
+			require("chatgpt").setup({
+			  welcome_message = "欢迎回来，沙福林大人", -- set to "" if you don't like the fancy godot robot
+			  loading_text = "loading",
+			  question_sign = "😈", -- you can use emoji if you want e.g. 🙂
+			  answer_sign = "🤖", -- 🤖
+			  max_line_length = 120,
+			  yank_register = "+",
+			  chat_layout = {
+				relative = "editor",
+				position = "50%",
+				size = {
+				  height = "80%",
+				  width = "80%",
+				},
+			  },
+			  settings_window = {
+				border = {
+				  style = "rounded",
+				  text = {
+					top = " Settings ",
+				  },
+				},
+			  },
+			  chat_window = {
+				filetype = "chatgpt",
+				border = {
+				  highlight = "FloatBorder",
+				  style = "rounded",
+				  text = {
+					top = " ChatGPT ",
+				  },
+				},
+			  },
+			  chat_input = {
+				prompt = "  ",
+				border = {
+				  highlight = "FloatBorder",
+				  style = "rounded",
+				  text = {
+					top_align = "center",
+					top = " Prompt ",
+				  },
+				},
+			  },
+			  openai_params = {
+				model = "text-davinci-003",
+				frequency_penalty = 0,
+				presence_penalty = 0,
+				max_tokens = 300,
+				temperature = 0,
+				top_p = 1,
+				n = 1,
+			  },
+			  openai_edit_params = {
+				model = "code-davinci-edit-001",
+				temperature = 0,
+				top_p = 1,
+				n = 1,
+			  },
+			  keymaps = {
+				close = { "<Esc>" },
+				yank_last = "<C-y>",
+				scroll_up = "<C-u>",
+				scroll_down = "<C-d>",
+				toggle_settings = "<C-o>",
+				new_session = "<C-n>",
+				cycle_windows = "<Tab>",
+			  },
+
+
+			})
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim"
+		}
+	}
 
 	--for rust, rust-tools 
 	--these override the defaults set by rust-tools.nvim
