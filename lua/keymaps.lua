@@ -72,8 +72,8 @@ noremap('i', '<A-O>', '<Esc>O', {})
 --use <Esc> to exit terminal-mode
 noremap('t', '<Esc>', '<C-\\><C-n>', {})
 -- <leader>ra to start RnvimrToggle
-noremap('n', '<leader>ra', '<cmd>RnvimrToggle<cr>', {})
-
+noremap('n', '<leader>ra', '<cmd>Ranger<cr>', {})
+noremap('n', '<leader>jo', '<cmd>Joshuto<cr>', {})
 
 
 ---
@@ -99,16 +99,18 @@ M.nvimRkey = function() -- set up NvimR keymaps
 	map({'n','v'}, '<localleader><space>', ":call SendLineToR(\"stay\")<CR>", bufopts)
 	map('n', '<localleader>ro', ":call RObjBrowser()<CR>", bufopts)
 	map('n', '<localleader>rh', ":call RAction(\"help\")<CR>", bufopts)
+	map('n', '<localleader>rv', ":call RAction(\"viewobj\")<CR>", bufopts)
 end
 
 
-M.telescopekey = function() -- telescope.nvim keymaps
-	local telescope = require('telescope.builtin')
-	map('n', '<leader>ff', telescope.find_files, {})
-	map('n', '<leader>fg', telescope.live_grep, {})
-	map('n', '<leader>b', telescope.buffers, {})
---	map('n', '<leader>h', telescope.help_tags, {})
-end
+--M.telescopekey = function() -- telescope.nvim keymaps
+--	local telescope = require('telescope.builtin')
+--	noremap('n', '<leader>ff', telescope.find_files, {})
+--	noremap('n', '<leader>fg', telescope.live_grep, {})
+--	noremap('n', '<leader>fb', telescope.buffers, {})
+----	map('n', '<leader>fh', telescope.help_tags, {})
+--end
+
 
 M.dap = function ()
 	-- debug

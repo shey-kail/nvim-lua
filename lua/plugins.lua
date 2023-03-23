@@ -1,11 +1,9 @@
-local keymaps = require("keymaps")
+--local keymaps = require("keymaps")
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 vim.cmd [[packadd plenary.nvim]]
-vim.cmd [[packadd telescope.nvim]]
-vim.cmd [[packadd nui.nvim]]
 
 return require('packer').startup(function(use)
 	-- Packer can manage itself
@@ -15,13 +13,6 @@ return require('packer').startup(function(use)
 	use { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup{} end }
 	use {'mg979/vim-visual-multi'}
 	use { "kylechui/nvim-surround", tag = "*", config = function() require("nvim-surround").setup{} end } -- Use tag="*" for stability; omit to use `main` branch for the latest features
-
-	--	markdown
-	use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', ft = {'markdown'} }
-	-- use 'dhruvasagar/vim-table-mode'
-
-	-- insert image 
-	--use 'ferrine/md-img-paste.vim'
 
 	-- Lsp config
 	use {"williamboman/mason.nvim"}
@@ -66,7 +57,7 @@ return require('packer').startup(function(use)
 					py = true,
 					go = true,
 					lua = true,
-					r =true
+					r = true
 				  },
 				})
 
@@ -83,105 +74,24 @@ return require('packer').startup(function(use)
 		end,
 	}
 
-	use {"jackMort/ChatGPT.nvim",
-		opt = true,
-		config = function()
-			require("chatgpt").setup({
-			  welcome_message = "欢迎回来，沙福林大人", -- set to "" if you don't like the fancy godot robot
-			  loading_text = "loading",
-			  question_sign = "😈", -- you can use emoji if you want e.g. 🙂
-			  answer_sign = "🤖", -- 🤖
-			  max_line_length = 120,
-			  yank_register = "+",
-			  chat_layout = {
-				relative = "editor",
-				position = "50%",
-				size = {
-				  height = "80%",
-				  width = "80%",
-				},
-			  },
-			  settings_window = {
-				border = {
-				  style = "rounded",
-				  text = {
-					top = " Settings ",
-				  },
-				},
-			  },
-			  chat_window = {
-				filetype = "chatgpt",
-				border = {
-				  highlight = "FloatBorder",
-				  style = "rounded",
-				  text = {
-					top = " ChatGPT ",
-				  },
-				},
-			  },
-			  chat_input = {
-				prompt = "  ",
-				border = {
-				  highlight = "FloatBorder",
-				  style = "rounded",
-				  text = {
-					top_align = "center",
-					top = " Prompt ",
-				  },
-				},
-			  },
-			  openai_params = {
-				model = "text-davinci-003",
-				frequency_penalty = 0,
-				presence_penalty = 0,
-				max_tokens = 300,
-				temperature = 0,
-				top_p = 1,
-				n = 1,
-			  },
-			  openai_edit_params = {
-				model = "code-davinci-edit-001",
-				temperature = 0,
-				top_p = 1,
-				n = 1,
-			  },
-			  keymaps = {
-				close = { "<Esc>" },
-				yank_last = "<C-y>",
-				scroll_up = "<C-u>",
-				scroll_down = "<C-d>",
-				toggle_settings = "<C-o>",
-				new_session = "<C-n>",
-				cycle_windows = "<Tab>",
-			  },
-
-
-			})
-		end,
-		requires = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim"
-		}
-	}
-
-	--for rust, rust-tools 
-	--these override the defaults set by rust-tools.nvim
-    --	use { "simrat39/rust-tools.nvim", config = { tools = { runnables = { use_telescope = true, }, inlay_hints = { auto = true, show_parameter_hints = false, parameter_hints_prefix = "", other_hints_prefix = "", }, }, } }
-
+--	use {"jalvesaq/cmp-nvim-r",
+--		event = "InsertEnter",
+--		config = function ()
+--			require'cmp_nvim_r'.setup({
+--				filetypes = {'r'},
+--				doc_width = 58
+--		  })
+--		end,
+--	}
 
 	-- dress
 	use {'stevearc/dressing.nvim'}
 
-
 	--	fcitx auto-convertion
-	--use {'vim-scripts/fcitx.vim'}
-	use {'h-hg/fcitx.nvim'}
-	--use '520Matches/fcitx5.vim' 
-
+	use 'h-hg/fcitx.nvim'
 
 	-- nvim-R
-	use {'jalvesaq/Nvim-R', ft = {'r'}, branch="stable"}
+	use {'jalvesaq/Nvim-R', ft = {'r'}, branch="stable" }
 
 	-- debug 
 	use {"ravenxrz/DAPInstall.nvim",opt=true}
@@ -199,7 +109,6 @@ return require('packer').startup(function(use)
 			require("ufo").setup()
 		end
 	}
-
 
 	-- a simple tab line
 	use {'crispgm/nvim-tabline',
@@ -230,28 +139,44 @@ return require('packer').startup(function(use)
 	}
 
 	-- open ranger in neovim
-	use {'kevinhwang91/rnvimr'}
-
-	-- indentLine
-	--use {'Yggdroot/indentLine'}
-	--use {"lukas-reineke/indent-blankline.nvim", config = function () require("indent_blankline").setup{ } end }
+	use {'is0n/fm-nvim',
+		config = require('fm-nvim').setup{
+			-- (Vim) Command used to open files
+			edit_cmd = "edit",
+			-- See `Q&A` for more info
+			-- on_close = {},
+			-- on_open = {},
+			-- Terminal commands used w/ file manager (have to be in your $PATH)
+			cmds = {
+				gitui_cmd   = "gitui",
+				ranger_cmd  = "ranger",
+				joshuto_cmd = "joshuto",
+			},
+			-- Mappings used with the plugin
+			mappings = {
+				vert_split = "<C-v>",
+				horz_split = "<C-h>",
+				tabedit    = "<C-t>",
+				edit       = "<C-e>",
+				ESC        = "<ESC>"
+			},
+			-- Path to broot config
+			broot_conf = vim.fn.stdpath("data") .. "/site/pack/packer/start/fm-nvim/assets/broot_conf.hjson"
+		}
+	}
 
 	--fuzzy finder
-	use { 'nvim-telescope/telescope.nvim',
-		opt=true,
-		tag = '0.1.0',
-		requires = {'nvim-lua/plenary.nvim'},
-		config = function ()
-			require("telescopeconfig")
-			keymaps.telescopekey()
-		end
-	}
+	use {'nvim-telescope/telescope.nvim', tag = '0.1.1', requires = { {'nvim-lua/plenary.nvim'} } }
 
 	-- color theme
 	use {'shey-kail/one-nvim'}
 
 	-- start time
 	use 'dstein64/vim-startuptime'
+
+	-- indentLine
+	--use {'Yggdroot/indentLine'}
+	--use {"lukas-reineke/indent-blankline.nvim", config = function () require("indent_blankline").setup{ } end }
 
 
 end)

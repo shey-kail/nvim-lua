@@ -9,14 +9,13 @@ require("mason").setup()
 -- enable mason-lspconfig
 local mason_lspconfig=require("mason-lspconfig")
 
--- ensure gopls pyright r_language_server sumneko_lua rust_analyzer be installed
+-- ensure gopls pyright r_language_server be installed
 mason_lspconfig.setup({
 	ensure_installed = {
 		"gopls",
 		"pyright",
 		"r_language_server",
-		"sumneko_lua",
-		"rust_analyzer"
+		"lua_ls",
 	},
 })
 
@@ -59,45 +58,18 @@ for _, lsp in ipairs(servers) do
         },
       },
     }
-  elseif lsp=="rust_analyzer" then
+  elseif lsp == "lua_ls" then
 	lspconfig[lsp].setup {
-      on_attach = attach,
-      capabilities = capabilities,
-	  settings = {
-		["rust-analyzer"] = {
-			checkOnSave = {
-				command = "clippy",
-			},
-			assist = {
-				importGranularity = "module",
-				importPrefix = "by_self",
-			},
-			cargo = {
-				loadOutDirsFromCheck = true,
-			},
-			procMacro = {
-				enable = true,
-			},
-			hoverActions = {
-				references = true,
-			},
-			inlayHints = {
-				hideNamedConstructorHints = true,
-			},
-			lens = {
-				enumVariantReferences = true,
-				methodReferences = true,
-				references = true,
-			},
-			rustfmt = {
-				enableRangeFormatting = true,
-			},
-			-- files = {
-			--     watcher = -- I don't know what should i can set in here
-			-- }
-		},
-     },
-  }
+	  on_attach = attach,
+	  capabilities = capabilities,
+	   settings = {
+		   Lua = {
+			   diagnostics = {
+				   globals = { "vim" }
+			   }
+		   }
+	   }
+	}
   else
     lspconfig[lsp].setup {
       on_attach = attach,
@@ -105,7 +77,6 @@ for _, lsp in ipairs(servers) do
     }
   end
 end
-
 
 -- luasnip setup for cmp
 local luasnip = require 'luasnip'
