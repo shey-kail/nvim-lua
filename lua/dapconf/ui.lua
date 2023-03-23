@@ -45,9 +45,9 @@ require("dapui").setup({
 			step_into = "",
 			step_over = "",
 			step_out = "",
-			step_back = "",
-			run_last = "↻",
-			terminate = "ﱢ",
+			step_back = "🔙",
+			run_last = "🔄",
+			terminate = "❌",
 		},
 	},
 	floating = {

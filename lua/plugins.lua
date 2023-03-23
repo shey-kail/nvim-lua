@@ -74,16 +74,6 @@ return require('packer').startup(function(use)
 		end,
 	}
 
---	use {"jalvesaq/cmp-nvim-r",
---		event = "InsertEnter",
---		config = function ()
---			require'cmp_nvim_r'.setup({
---				filetypes = {'r'},
---				doc_width = 58
---		  })
---		end,
---	}
-
 	-- dress
 	use {'stevearc/dressing.nvim'}
 
@@ -98,6 +88,8 @@ return require('packer').startup(function(use)
 	use {"ravenxrz/nvim-dap",opt=true}
 	use {"theHamsta/nvim-dap-virtual-text",opt=true}
 	use {"rcarriga/nvim-dap-ui",opt=true}
+    use {'hkupty/iron.nvim'}
+
 
 	-- fastfold
 	--use {'Konfekt/FastFold', ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'go', 'vim', 'r', 'cs','py','lua'}}

@@ -8,6 +8,8 @@ require('keymaps')
 require('lspconf')
 -- managing dap
 require('dapconf')
+
+require("repl")
 -- my custom functions and command
 require("my")
 
