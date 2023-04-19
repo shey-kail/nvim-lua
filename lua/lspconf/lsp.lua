@@ -43,40 +43,45 @@ capabilities.textDocument.foldingRange = {
 }
 
 -- Enable all language servers installed with the additional completion capabilities offered by nvim-cmp
-local servers = mason_lspconfig.get_installed_servers()
+-- use quick-start config to speed up this step
+require("mason-lspconfig").setup_handlers({
+	-- default setup
+    function(server)
+        lspconfig[server].setup({
+            on_attach = attach,
+			capabilities = capabilities,
+        })
+    end,
 
-for _, lsp in ipairs(servers) do
-  if lsp == "r_language_server" then
-	lspconfig[lsp].setup {
-      on_attach = attach,
-      capabilities = capabilities,
-	  settings = {
-        r = {
-          lsp = {
-            diagnostics = false,
-          },
-        },
-      },
-    }
-  elseif lsp == "lua_ls" then
-	lspconfig[lsp].setup {
-	  on_attach = attach,
-	  capabilities = capabilities,
-	   settings = {
-		   Lua = {
-			   diagnostics = {
-				   globals = { "vim" }
+   -- provide targeted overrides for specific servers.
+   ["r_language_server"] = function ()
+		lspconfig["r_language_server"].setup {
+		  on_attach = attach,
+		  capabilities = capabilities,
+		  settings = {
+			r = {
+			  lsp = {
+				diagnostics = false,
+			  },
+			},
+		  },
+		}
+   end,
+   ["lua_ls"] = function ()
+	   lspconfig.lua_ls.setup {
+		  on_attach = attach,
+		  capabilities = capabilities,
+		   settings = {
+			   Lua = {
+				   diagnostics = {
+					   globals = { "vim" }
+				   }
 			   }
 		   }
 	   }
-	}
-  else
-    lspconfig[lsp].setup {
-      on_attach = attach,
-      capabilities = capabilities,
-    }
-  end
-end
+   end,
+})
+
 
 -- luasnip setup for cmp
 local luasnip = require 'luasnip'

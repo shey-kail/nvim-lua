@@ -8,25 +8,27 @@ iron.setup {
     repl_definition = {
 		python = {command = function ()
 			if os.getenv("CONDA_PREFIX") == nil then
-				return {"python3"}
+				return {"ipython3"}
 			else
-				return {os.getenv("CONDA_PREFIX") .. "/bin/python3"}
+				return {os.getenv("CONDA_PREFIX") .. "/bin/ipython3"}
 			end
 		end }
     },
-    repl_open_cmd = require('iron.view').right(40),
+    repl_open_cmd = 'rightbelow 40vsplit',
   },
   -- Iron doesn't set keymaps by default anymore.
   -- You can set them here or manually add keymaps to the functions in iron.core
   keymaps = {
 	visual_send = "<localleader><leader>",
-	send_line = "<localleader><leader>",
+	send_line   = "<localleader><leader>",
+	clear       = "<localleader>cl",
+
   },
   -- If the highlight is on, you can change how it looks
   -- For the available options, check nvim_set_hl
   highlight = {
     italic = true
   },
-  ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
+  ignore_blank_lines = false, -- ignore blank lines when sending visual select lines
 }
 
