@@ -52,4 +52,8 @@ vim.g.R_assign = 0
 vim.g.R_args = {"--no-save","--quiet"}
 -- View a data.frame or matrix
 vim.g.R_df_viewer = "View(%s)"
+--enable rstudio
+--vim.g.R_external_term = 1
+--vim.g.RStudio_cmd = '/media/linux/miniconda3/envs/R/bin/rstudio'
+
 

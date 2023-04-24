@@ -12,6 +12,13 @@ iron.setup {
 			else
 				return {os.getenv("CONDA_PREFIX") .. "/bin/ipython3"}
 			end
+		end };
+		r = {command = function ()
+			if os.getenv("CONDA_PREFIX") == nil then
+				return {"R"}
+			else
+				return {os.getenv("CONDA_PREFIX") .. "/bin/rstudio"}
+			end
 		end }
     },
     repl_open_cmd = 'rightbelow 40vsplit',

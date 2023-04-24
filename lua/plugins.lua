@@ -77,6 +77,9 @@ return require('packer').startup(function(use)
 	-- dress
 	use {'stevearc/dressing.nvim'}
 
+	-- color 
+	use {'norcalli/nvim-colorizer.lua'}
+
 	--	fcitx auto-convertion
 	use 'h-hg/fcitx.nvim'
 
